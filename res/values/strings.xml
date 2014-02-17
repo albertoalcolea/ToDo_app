@@ -20,5 +20,8 @@
     <string name="reset_string">Reset</string>
     <string name="submit_string">Submit</string>
     <string name="enter_title_string">Enter Title</string>
+    
+    <color name="done">#0A2A0A</color>
+    <color name="not_done">#3B0B0B</color>
 
 </resources>

@@ -90,8 +90,8 @@ public class ToDoListAdapter extends BaseAdapter {
 
 		//TODO - Inflate the View for this ToDoItem
 		// from todo_item.xml.
-		LayoutInflater inflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		RelativeLayout itemLayout = (RelativeLayout) inflater.inflate(R.layout.todo_item, parent, false);
+		final LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		final RelativeLayout itemLayout = (RelativeLayout) inflater.inflate(R.layout.todo_item, parent, false);
 		
 		//TODO - Fill in specific ToDoItem data
 		// Remember that the data that goes in this View
@@ -119,8 +119,10 @@ public class ToDoListAdapter extends BaseAdapter {
 				// is called when the user toggles the status checkbox
 				if (isChecked) {
 					toDoItem.setStatus(Status.DONE);
+					itemLayout.setBackgroundResource(R.color.done);
 				} else {
 					toDoItem.setStatus(Status.NOTDONE);
+					itemLayout.setBackgroundResource(R.color.not_done);
 				}
 			}
 		});
@@ -137,6 +139,14 @@ public class ToDoListAdapter extends BaseAdapter {
 		final TextView dateView = (TextView) itemLayout.findViewById(R.id.dateView);
 		dateView.setText(ToDoItem.FORMAT.format(toDoItem.getDate()));
 				
+		
+		// Diferent background color if the item is done or not
+		if (toDoItem.getStatus() == Status.DONE) {
+			itemLayout.setBackgroundResource(R.color.done);
+		} else {
+			itemLayout.setBackgroundResource(R.color.not_done);
+		}
+		
 
 		// Return the View you just created
 		return itemLayout;

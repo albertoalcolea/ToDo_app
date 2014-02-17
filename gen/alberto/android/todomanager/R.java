@@ -10,6 +10,10 @@ package alberto.android.todomanager;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int done=0x7f060000;
+        public static final int not_done=0x7f060001;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -24,34 +28,34 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int DateLabel=0x7f06001a;
-        public static final int PriorityLabel=0x7f060018;
-        public static final int RelativeLayout1=0x7f060014;
-        public static final int StatusLabel=0x7f060016;
-        public static final int TitleLabel=0x7f060000;
-        public static final int cancelButton=0x7f060010;
-        public static final int date=0x7f06000c;
-        public static final int dateView=0x7f06001b;
-        public static final int date_picker_button=0x7f06000e;
-        public static final int footerView=0x7f060013;
-        public static final int highPriority=0x7f06000a;
-        public static final int lowPriority=0x7f060008;
-        public static final int medPriority=0x7f060009;
-        public static final int priority=0x7f060006;
-        public static final int priorityGroup=0x7f060007;
-        public static final int priorityView=0x7f060019;
-        public static final int resetButton=0x7f060011;
-        public static final int status=0x7f060002;
-        public static final int statusCheckBox=0x7f060017;
-        public static final int statusDone=0x7f060004;
-        public static final int statusGroup=0x7f060003;
-        public static final int statusNotDone=0x7f060005;
-        public static final int submitButton=0x7f060012;
-        public static final int time=0x7f06000d;
-        public static final int time_and_date=0x7f06000b;
-        public static final int time_picker_button=0x7f06000f;
-        public static final int title=0x7f060001;
-        public static final int titleView=0x7f060015;
+        public static final int DateLabel=0x7f07001a;
+        public static final int PriorityLabel=0x7f070018;
+        public static final int RelativeLayout1=0x7f070014;
+        public static final int StatusLabel=0x7f070016;
+        public static final int TitleLabel=0x7f070000;
+        public static final int cancelButton=0x7f070010;
+        public static final int date=0x7f07000c;
+        public static final int dateView=0x7f07001b;
+        public static final int date_picker_button=0x7f07000e;
+        public static final int footerView=0x7f070013;
+        public static final int highPriority=0x7f07000a;
+        public static final int lowPriority=0x7f070008;
+        public static final int medPriority=0x7f070009;
+        public static final int priority=0x7f070006;
+        public static final int priorityGroup=0x7f070007;
+        public static final int priorityView=0x7f070019;
+        public static final int resetButton=0x7f070011;
+        public static final int status=0x7f070002;
+        public static final int statusCheckBox=0x7f070017;
+        public static final int statusDone=0x7f070004;
+        public static final int statusGroup=0x7f070003;
+        public static final int statusNotDone=0x7f070005;
+        public static final int submitButton=0x7f070012;
+        public static final int time=0x7f07000d;
+        public static final int time_and_date=0x7f07000b;
+        public static final int time_picker_button=0x7f07000f;
+        public static final int title=0x7f070001;
+        public static final int titleView=0x7f070015;
     }
     public static final class layout {
         public static final int add_todo=0x7f030000;
