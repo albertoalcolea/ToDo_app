@@ -5,10 +5,14 @@ import java.util.List;
 
 import alberto.android.todomanager.ToDoItem.Priority;
 import alberto.android.todomanager.ToDoItem.Status;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -25,13 +29,15 @@ public class ToDoListAdapter extends BaseAdapter {
 	private final List<ToDoItem> mItems = new ArrayList<ToDoItem>();
 	
 	private final Context mContext;
+	private final Activity mActivity;
 
 	private static final String TAG = "Lab-UserInterface";
 
-	public ToDoListAdapter(Context context) {
+	public ToDoListAdapter(Context context, Activity activity) {
 
 		mContext = context;
-
+		mActivity = activity;
+		
 	}
 
 	// Add a ToDoItem to the adapter
@@ -80,12 +86,13 @@ public class ToDoListAdapter extends BaseAdapter {
 		return pos;
 
 	}
+	
 
 	//Create a View to display the ToDoItem 
 	// at specified position in mItems
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 
 
 		//TODO - Get the current ToDoItem
@@ -175,12 +182,44 @@ public class ToDoListAdapter extends BaseAdapter {
 		} else {
 			itemLayout.setBackgroundResource(R.color.not_done);
 		}
+
+		
+		// Delete item
+		itemLayout.setOnLongClickListener(new OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				log("Entered onLongClick()");
+				
+				AlertDialog.Builder alertBuilder = new AlertDialog.Builder(mActivity);
+				alertBuilder.setMessage("Are you sure do you want to delete this task?");
+				alertBuilder.setCancelable(true);
+				alertBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+	                public void onClick(DialogInterface dialog, int id) {
+	                	log("Delete task");
+	                	mItems.remove(position);
+	                	notifyDataSetChanged();
+	                    dialog.cancel();
+	                }
+	            });
+				alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+	                public void onClick(DialogInterface dialog, int id) {
+	                    dialog.cancel();
+	                }
+	            });
+
+	            AlertDialog alert = alertBuilder.create();
+	            alert.show();
+	            
+				return false;
+			}
+		});
 		
 
 		// Return the View you just created
 		return itemLayout;
 
 	}
+
 	
 	private void log(String msg) {
 		try {
