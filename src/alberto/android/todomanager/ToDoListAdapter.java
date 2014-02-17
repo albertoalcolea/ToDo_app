@@ -3,17 +3,20 @@ package alberto.android.todomanager;
 import java.util.ArrayList;
 import java.util.List;
 
+import alberto.android.todomanager.ToDoItem.Priority;
 import alberto.android.todomanager.ToDoItem.Status;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class ToDoListAdapter extends BaseAdapter {
@@ -129,9 +132,35 @@ public class ToDoListAdapter extends BaseAdapter {
 
 		//TODO - Display Priority in a TextView
 
-		final TextView priorityView = (TextView) itemLayout.findViewById(R.id.priorityView);
-		priorityView.setText(toDoItem.getPriority().toString());
+//		final TextView priorityView = (TextView) itemLayout.findViewById(R.id.priorityView);
+//		priorityView.setText(toDoItem.getPriority().toString());
+		final Spinner prioritySpinner = (Spinner) itemLayout.findViewById(R.id.prioritySpinner);
+		setPrioritySpinner(prioritySpinner, toDoItem);
+		
+		
+		prioritySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+				switch (position) {
+				case 0:
+					toDoItem.setPriority(Priority.LOW);
+					break;
+				case 1:
+					toDoItem.setPriority(Priority.MED);
+					break;
+				case 2:
+					toDoItem.setPriority(Priority.HIGH);
+					break;
+				}
+			}
 
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView) {
+				setPrioritySpinner(prioritySpinner, toDoItem);
+			}
+		});
+		
+		
 		
 		// TODO - Display Time and Date. 
 		// Hint - use ToDoItem.FORMAT.format(toDoItem.getDate()) to get date and time String
@@ -162,4 +191,18 @@ public class ToDoListAdapter extends BaseAdapter {
 		Log.i(TAG, msg);
 	}
 
+	
+	private void setPrioritySpinner(Spinner prioritySpinner, ToDoItem toDoItem) {
+		switch (toDoItem.getPriority()) {
+			case LOW:
+				prioritySpinner.setSelection(0);
+				break;
+			case MED:
+				prioritySpinner.setSelection(1);
+				break;
+			case HIGH:
+				prioritySpinner.setSelection(2);
+				break;
+		}
+	}
 }

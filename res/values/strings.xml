@@ -24,4 +24,9 @@
     <color name="done">#0A2A0A</color>
     <color name="not_done">#3B0B0B</color>
 
+    <string-array name="priorities">
+		<item>Low</item>
+		<item>Medium</item>
+		<item>High</item>
+	</string-array>
 </resources>
