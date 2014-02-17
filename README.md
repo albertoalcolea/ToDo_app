@@ -1,4 +1,4 @@
-ToDo_app
+TODO app
 ========
 
 Android ToDo list app
