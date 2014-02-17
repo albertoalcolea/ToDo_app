@@ -52,7 +52,7 @@
         android:layout_alignBaseline="@+id/statusCheckBox"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/StatusLabel"
-        android:paddingLeft="20dp" >
+        android:paddingLeft="5dp" >
 
     </TextView>
 
